@@ -1,0 +1,17 @@
+services:
+  transmission:
+    image: linuxserver/transmission:4.0.6
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - TRANSMISSION_WEB_HOME=/webui
+      - USER=YOUR_USER
+      - PASS=YOUR_PASS
+      - PEERPORT=51453
+    volumes:
+      - /mnt/data/transmission/config:/config
+      - /mnt/data/transmission/downloads:/downloads
+      - /mnt/data/transmission/transmission-web-control/src:/webui
+    network_mode: host # IPV6
+    restart: unless-stopped

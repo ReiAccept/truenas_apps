@@ -1,0 +1,14 @@
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent:5.0.4
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=51454 # port 6881 is blacklisted
+    volumes:
+      - /mnt/data/qbittorrent/config:/config
+      - /mnt/data/qbittorrent/downloads:/downloads
+    network_mode: host # IPV6
+    restart: unless-stopped
