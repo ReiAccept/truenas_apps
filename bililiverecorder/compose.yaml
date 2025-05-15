@@ -1,0 +1,15 @@
+services:
+  recorder:
+    image: bililive/recorder:2.17.0
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /mnt/data/bililiverecorder
+        target: /rec
+    ports:
+      - "2356:2356"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - BREC_HTTP_OPEN_ACCESS=1 # 禁用密码

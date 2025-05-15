@@ -2,6 +2,6 @@ services:
   mihomo:
     image: metacubex/mihomo:v1.19.5
     volumes:
-      - /root/mihomo/config.yaml:/root/.config/mihomo/config.yaml
+      - /mnt/apps/mihomo/config.yaml:/root/.config/mihomo/config.yaml
     network_mode: host
     restart: unless-stopped
