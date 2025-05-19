@@ -1,0 +1,14 @@
+services:
+  caution:
+    image: ghcr.io/biliup/caution:v0.4.98
+    restart: unless-stopped
+    ports:
+      - 19159:19159
+    volumes:
+      - /mnt/apps/biliup:/opt # 配置文件保存在 SSD 上，且使用 SSD 录制和完成上传
+      - /mnt/data/biliup/records:/records # 录制完成后到机械硬盘存档
+    user: 1000:1000
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
